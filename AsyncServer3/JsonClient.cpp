@@ -32,10 +32,13 @@ int main()
 		char send_data[MAX_LENGTH] = { 0 };
 		int msgid = 1001;
 		int msgid_host = boost::asio::detail::socket_ops::host_to_network_short(msgid);
+		cout << "send msgid's 网络字节序 is " << msgid_host << endl;
 		memcpy(send_data, &msgid_host, 2);
 		//转为网络字节序
 		int request_host_length = boost::asio::detail::socket_ops::host_to_network_short(request_length);
 		memcpy(send_data+2, &request_host_length, 2);
+		cout << "send 消息长度 is " << request_host_length << endl;
+
 		memcpy(send_data + 4, request.c_str(), request_length);
 		boost::asio::write(sock, boost::asio::buffer(send_data, request_length + 4));
 		cout << "begin to receive..." << endl;

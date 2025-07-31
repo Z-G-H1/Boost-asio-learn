@@ -123,6 +123,7 @@ void CSession::HandleRead(const boost::system::error_code& error, size_t  bytes_
                 // 头部节点存储的是 消息体的长度
                 short msg_len;
                 memcpy(&msg_len, _recv_head_node->_data+HEAD_ID_LEN, HEAD_DATA_LEN);
+                msg_len = boost::asio::detail::socket_ops::network_to_host_short(msg_len);
                 cout << "msg_len is " << msg_len << endl;
 
                 // 数据长度非法
