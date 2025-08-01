@@ -30,6 +30,7 @@ public:
 };
 
 class RecvNode : public MsgNode{
+	friend class LogicSystem;
 public:
 	RecvNode(short max_len,short msg_id);
 private:

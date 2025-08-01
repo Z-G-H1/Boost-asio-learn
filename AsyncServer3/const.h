@@ -13,3 +13,9 @@ using namespace std;
 #include <jsoncpp/json/json.h>
 #include <jsoncpp/json/value.h>
 #include <jsoncpp/json/reader.h>
+
+
+
+enum MSG_IDS {
+    MSG_HELLO_WORD = 1001
+};

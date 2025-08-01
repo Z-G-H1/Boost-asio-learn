@@ -227,3 +227,10 @@ void CSession::HandleRead(const boost::system::error_code& error, size_t  bytes_
 		_server->ClearSession(_uuid);
 	}
 }
+
+
+LogicNode::LogicNode(shared_ptr<CSession> session, shared_ptr<RecvNode> recvnode)
+    : _session(session), _recv_node(recvnode)
+{
+
+}

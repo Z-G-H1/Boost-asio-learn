@@ -41,3 +41,12 @@ private:
 	std::shared_ptr<RecvNode> _recv_msg_node;
 };
 
+/// @brief 会话类的智能指针，主要是为了实现伪闭包，防止session被释放
+class LogicNode {
+	friend class LogicSystem;
+public:
+	LogicNode(shared_ptr<CSession>, shared_ptr<RecvNode>);
+private:
+	shared_ptr<CSession> _session;
+	shared_ptr<RecvNode> _recv_node;
+};

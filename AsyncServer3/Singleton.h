@@ -4,6 +4,7 @@ template <typename T>
 class Singleton{
 
 // 无参构造，拷贝构造，拷贝赋值  其他类无法访问
+// 使用protected 子类才能访问基类的构造函数 
 protected:
     Singleton() = default;
     Singleton(Singleton<T> &) = delete;
@@ -23,7 +24,7 @@ public:
     }
 
     void PrintAddress(){
-        std::cout << _instance.get() << std::endl;
+        std::cout << _instance->get() << std::endl;
     }
 
     ~Singleton() {
